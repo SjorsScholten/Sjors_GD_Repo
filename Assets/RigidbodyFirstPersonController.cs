@@ -106,7 +106,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         
 
         private void Move(Vector2 input) {
-            //if the player does want to move and has either airconrol or is grounded
+            //if the player does want to move and has either air-control or is grounded
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon)
                 && (advancedSettings.airControl || m_IsGrounded)) 
             {
@@ -130,12 +130,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Jump(Vector2 input)
         {
-            
             if (m_IsGrounded) 
             {
                 m_RigidBody.drag = 5f;
-                
-                
                 if (m_Jump) 
                 {
                     m_RigidBody.drag = 0f;
@@ -143,8 +140,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
                     m_Jumping = true;
                 }
-                
-
                 if (!m_Jumping
                     && Mathf.Abs(input.x) < float.Epsilon
                     && Mathf.Abs(input.y) < float.Epsilon
@@ -152,16 +147,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     m_RigidBody.Sleep();
                 }
-                
             }
-            
-            
             else 
             {
                 m_RigidBody.drag = 0f;
                 if (m_PreviouslyGrounded && !m_Jumping) StickToGroundHelper();
             }
-
             m_Jump = false;
         }
 

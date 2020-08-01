@@ -1,79 +1,151 @@
-﻿using UnityEngine;
+﻿using System;
+using FirstPersonController.Scripts.MovementStates;
+using FirstPersonController.Utility;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace FirstPersonController.Scripts {
-    [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(CapsuleCollider))]
-    public class FirstPersonController : MonoBehaviour, Sjors_GD_Repo.IPlayerActions {
-        [SerializeField] private float walkSpeed = 5;
-        
+    public class FirstPersonController : Entity, Sjors_GD_Repo.IPlayerActions {
+        [Serializable]
+        public class MovementSetting
+        {
+            [SerializeField] private float forwardMoveSpeed = 8.0f, strafeMoveSpeed = 5.0f, backwardMoveSpeed = 4.0f;
+            [HideInInspector] public float CurrentMoveSpeed = 0.0f;
+
+            public void UpdateCurrentMoveSpeed(Vector2 direction)
+            {
+                if (direction.x < 0 || direction.x > 0) CurrentMoveSpeed = strafeMoveSpeed;
+                if (direction.y < 0) CurrentMoveSpeed = backwardMoveSpeed;
+                if (direction.y > 0) CurrentMoveSpeed = forwardMoveSpeed;
+            }
+        }
+
+        [Serializable]
+        public class CameraSettings
+        {
+            public float horizontalCameraSpeed = 5.0f, verticalCameraSpeed = 4.0f;
+            
+            private Quaternion ClampRotationAroundXAxis(Quaternion q, float min, float max)
+            {
+                q.x /= q.w;
+                q.y /= q.w;
+                q.z /= q.w;
+                q.w = 1.0f;
+
+                float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.x);
+                angleX = Mathf.Clamp (angleX, min, max);
+                q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
+            
+                return q;
+            }
+        }
+
+        [Serializable]
+        public class MovementBehaviour
+        {
+            private Quaternion m_TargetRotation;
+            private Entity m_Entity;
+            
+            private readonly FiniteStateMachine<BaseMovementState> m_StateMachine = new FiniteStateMachine<BaseMovementState>();
+
+            public MovementBehaviour(Entity entity)
+            {
+                m_Entity = entity;
+                m_TargetRotation = entity.transform.rotation;
+            }
+
+            public void Move(Vector2 direction, float moveSpeed, float deltaTime)
+            {
+                var targetDirection = m_Entity.transform.TransformDirection(direction.TransformDimension());
+                targetDirection = Vector3.ProjectOnPlane(targetDirection, Vector3.up).normalized;
+                targetDirection *= moveSpeed;
+
+                //TODO: change to constant force instead of instant force
+                if (m_Entity.rigidbody.velocity.sqrMagnitude < moveSpeed * moveSpeed)
+                {
+                    m_Entity.rigidbody.AddForce(targetDirection, ForceMode.VelocityChange);
+                }
+            }
+
+            public void Rotate(float axis, float sensitivity)
+            {
+                var oldRotation = m_Entity.transform.eulerAngles.y;
+                m_TargetRotation *= Quaternion.Euler(Vector3.up * (axis * sensitivity));
+                m_Entity.transform.localRotation = m_TargetRotation;
+                var velRotation = Quaternion.AngleAxis(m_Entity.transform.eulerAngles.y - oldRotation, Vector3.up);
+                m_Entity.rigidbody.velocity = velRotation * m_Entity.rigidbody.velocity;
+            }
+
+            public void Jump(float jumpForce)
+            {
+                //TODO: implement jumping
+                //TODO: implement Thrusting
+            }
+        }
+
+        [Serializable]
+        public class CameraBehaviour
+        {
+            private Quaternion _cameraTargetRotation;
+            private FirstPersonController m_FPSController;
+
+            public CameraBehaviour(FirstPersonController firstPersonController)
+            {
+                m_FPSController = firstPersonController;
+            }
+
+            public void Rotate(float axis, float sensitivity)
+            {
+                _cameraTargetRotation *= Quaternion.Euler(Vector3.right * (axis * sensitivity));
+                _cameraTargetRotation = ClampRotationAroundXAxis(_cameraTargetRotation, minPitch, maxPitch);
+                m_FPSController.cameraTransform.localRotation = _cameraTargetRotation;
+            }
+        }
+
+        [Serializable]
+        public class CombatBehaviour
+        {
+            
+        }
+
         [SerializeField] private float mouseSensitivity = 1;
         [SerializeField] private float minPitch = -90f, maxPitch = 90f;
         
+        public MovementSetting movementSettings = new MovementSetting();
+        public CameraSettings cameraSettings = new CameraSettings();
+        public Transform cameraTransform;
+        
+        private MovementBehaviour m_MovementBehaviour;
+        private CameraBehaviour m_CameraBehaviour;
+        private CombatBehaviour m_CombatBehaviour;
+        
         private Vector2 _inputDirection;
         private Vector2 _lookRotation;
-
-        private Quaternion _characterTargetRotation;
-        private Quaternion _cameraTargetRotation;
-
-        private Transform _myTransform;
-        private Rigidbody _myRigidbody;
+        
         private Camera _camera;
-        private Transform _cameraTransform;
 
-        private void Awake() {
+        protected override void Awake() {
+            base.Awake();
             
-            _myTransform = GetComponent<Transform>();
-            _myRigidbody = GetComponent<Rigidbody>();
+            m_MovementBehaviour = new MovementBehaviour(this);
+            m_CameraBehaviour = new CameraBehaviour(this);
+            m_CombatBehaviour = new CombatBehaviour();
             
             _camera = Camera.main;
-            _cameraTransform = _camera.GetComponent<Transform>();
-
-            _characterTargetRotation = _myTransform.localRotation;
-            _cameraTargetRotation = _cameraTransform.localRotation;
+            cameraTransform = _camera.GetComponent<Transform>();
         }
 
-        private void Update() {
-            
-            Rotate(_lookRotation);
+        private void Update() 
+        {
+            m_MovementBehaviour.Rotate(_lookRotation.x, cameraSettings.horizontalCameraSpeed);
+            m_CameraBehaviour.Rotate(-_lookRotation.y, cameraSettings.verticalCameraSpeed);
         }
 
-        private void FixedUpdate() {
-            
-            Move(_inputDirection, Time.fixedDeltaTime);
-        }
-
-        private void Move(Vector2 direction, float deltaTime) {
-            
-            var targetDirection = _cameraTransform.TransformDirection(direction.TransformDimension());
-            targetDirection = Vector3.ProjectOnPlane(targetDirection, Vector3.up).normalized;
-            targetDirection *= walkSpeed;
-            
-            if(_myRigidbody.velocity.sqrMagnitude < Mathf.Pow(walkSpeed, 2)) 
-                _myRigidbody.AddForce(targetDirection, ForceMode.VelocityChange);
-        }
-
-        private void Rotate(Vector2 direction) {
-            
-            ChangeJaw(direction.x);
-            ChangePitch(-direction.y);
-        }
-
-        private void ChangeJaw(float value) {
-            
-            var oldRotation = transform.eulerAngles.y;
-            _characterTargetRotation *= Quaternion.Euler(Vector3.up * value * mouseSensitivity);
-            _myTransform.localRotation = _characterTargetRotation;
-            var velRotation = Quaternion.AngleAxis(_myTransform.eulerAngles.y - oldRotation, Vector3.up);
-            _myRigidbody.velocity = velRotation * _myRigidbody.velocity;
-            
-        }
-
-        private void ChangePitch(float value) {
-            
-            _cameraTargetRotation *= Quaternion.Euler(Vector3.right * value * mouseSensitivity);
-            _cameraTargetRotation = ClampRotationAroundXAxis(_cameraTargetRotation, minPitch, maxPitch);
-            _cameraTransform.localRotation = _cameraTargetRotation;
+        private void FixedUpdate() 
+        {
+            movementSettings.UpdateCurrentMoveSpeed(_inputDirection);
+            m_MovementBehaviour.Move(_inputDirection, movementSettings.CurrentMoveSpeed, Time.fixedDeltaTime);
         }
 
         public void OnMove(InputAction.CallbackContext context) { _inputDirection = context.ReadValue<Vector2>(); }
@@ -82,21 +154,24 @@ namespace FirstPersonController.Scripts {
 
         public void OnFire(InputAction.CallbackContext context) { }
         
-        private Quaternion ClampRotationAroundXAxis(Quaternion q, float min, float max){
-            q.x /= q.w;
-            q.y /= q.w;
-            q.z /= q.w;
-            q.w = 1.0f;
+        
+    }
 
-            float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan (q.x);
-            angleX = Mathf.Clamp (angleX, min, max);
-            q.x = Mathf.Tan (0.5f * Mathf.Deg2Rad * angleX);
-            
-            return q;
+    [RequireComponent(typeof(Rigidbody))]
+    public abstract class Entity : MonoBehaviour
+    {
+        public new Transform transform;
+        public new Rigidbody rigidbody;
+
+        protected virtual void Awake()
+        {
+            transform = GetComponent<Transform>();
+            rigidbody = GetComponent<Rigidbody>();
         }
     }
 
-    public static class VectorExtentionMethods {
+    public static class VectorExtentionMethods 
+    {
         public static Vector3 TransformDimension(this Vector2 a) => new Vector3(a.x, 0, a.y);
     }
 }
