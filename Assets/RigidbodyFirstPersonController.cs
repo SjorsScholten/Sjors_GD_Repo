@@ -24,18 +24,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             public void UpdateDesiredTargetSpeed(Vector2 input) {
 	            if (input == Vector2.zero) return;
-	            
 	            //strafe
 				if (input.x > 0 || input.x < 0) CurrentTargetSpeed = StrafeSpeed;
-				
 				//backwards
 				if (input.y < 0) CurrentTargetSpeed = BackwardSpeed;
-				
-                //forwards
-                //handled last as if strafing and moving forward at the same time forwards speed should take precedence
+                //forwards, handled last as if strafing and moving forward at the same time forwards speed should take precedence
 				if (input.y > 0) CurrentTargetSpeed = ForwardSpeed;
 				
                 #if !MOBILE_INPUT
+                if (m_Running = Input.GetKey(RunKey)) CurrentTargetSpeed *= RunMultiplier;
+                
 	            if (Input.GetKey(RunKey)) {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -50,8 +48,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
         [Serializable]
-        public class AdvancedSettings
-        {
+        public class AdvancedSettings {
             public float groundCheckDistance = 0.01f; // distance for checking if the controller is grounded ( 0.01f seems to work best for this )
             public float stickToGroundHelperDistance = 0.5f; // stops the character
             public float slowDownRate = 20f; // rate at which the controller comes to a stop when there is no input
@@ -76,7 +73,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public Vector3 Velocity => m_RigidBody.velocity;
         public bool Grounded => m_IsGrounded; 
-
         public bool Jumping => m_Jumping;
 
         public bool Running {
@@ -96,69 +92,101 @@ namespace UnityStandardAssets.Characters.FirstPerson
             mouseLook.Init (transform, cam.transform);
         }
 
-
         private void Update() {
             RotateView();
-
             if (Input.GetButtonDown("Jump") && !m_Jump) m_Jump = true;
         }
 
-
         private void FixedUpdate() {
-            
             GroundCheck();
-            
             Vector2 input = GetInput();
+            Move(input);
+            Jump(input);
+        }
+        
 
-            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded)) {
+        private void Move(Vector2 input) {
+            //if the player does want to move and has either airconrol or is grounded
+            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon)
+                && (advancedSettings.airControl || m_IsGrounded)) 
+            {
                 // always move along the camera forward as it is the direction that it being aimed at
-                Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
+                Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
                 desiredMove = Vector3.ProjectOnPlane(desiredMove, m_GroundContactNormal).normalized;
 
+                //apply speed to direction
+                desiredMove *= movementSettings.CurrentTargetSpeed;
+
+                /* APPLY SPEED TO MOVE SEPERATE
                 desiredMove.x = desiredMove.x*movementSettings.CurrentTargetSpeed;
                 desiredMove.z = desiredMove.z*movementSettings.CurrentTargetSpeed;
                 desiredMove.y = desiredMove.y*movementSettings.CurrentTargetSpeed;
-                
-                if (m_RigidBody.velocity.sqrMagnitude < (movementSettings.CurrentTargetSpeed*movementSettings.CurrentTargetSpeed))  m_RigidBody.AddForce(desiredMove*SlopeMultiplier(), ForceMode.Impulse);
+                */
+
+                if (m_RigidBody.velocity.sqrMagnitude < Mathf.Pow(movementSettings.CurrentTargetSpeed, 2))
+                    m_RigidBody.AddForce(desiredMove * SlopeMultiplier(), ForceMode.Impulse);
             }
+        }
 
-            if (m_IsGrounded) {
+        private void Jump(Vector2 input)
+        {
+            
+            if (m_IsGrounded) 
+            {
                 m_RigidBody.drag = 5f;
-
-                if (m_Jump) {
+                
+                
+                if (m_Jump) 
+                {
                     m_RigidBody.drag = 0f;
                     m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
                     m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
                     m_Jumping = true;
                 }
-
-                if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f) m_RigidBody.Sleep();
                 
-            } else {
+
+                if (!m_Jumping
+                    && Mathf.Abs(input.x) < float.Epsilon
+                    && Mathf.Abs(input.y) < float.Epsilon
+                    && m_RigidBody.velocity.magnitude < 1f) 
+                {
+                    m_RigidBody.Sleep();
+                }
+                
+            }
+            
+            
+            else 
+            {
                 m_RigidBody.drag = 0f;
                 if (m_PreviouslyGrounded && !m_Jumping) StickToGroundHelper();
             }
-            
+
             m_Jump = false;
         }
 
-
-        private float SlopeMultiplier() {
+        private float SlopeMultiplier() 
+        {
             float angle = Vector3.Angle(m_GroundContactNormal, Vector3.up);
             return movementSettings.SlopeCurveModifier.Evaluate(angle);
         }
 
 
-        private void StickToGroundHelper() {
+        private void StickToGroundHelper()
+        {
             RaycastHit hitInfo;
             
             if (SphereCastToGround(out hitInfo))
             {
+                
                 if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)
                 {
+                    
                     m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
                 }
+                
             }
+            
         }
 
 
