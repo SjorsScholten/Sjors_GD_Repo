@@ -166,29 +166,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void StickToGroundHelper()
         {
             RaycastHit hitInfo;
-            
             if (SphereCastToGround(out hitInfo))
             {
-                
                 if (Mathf.Abs(Vector3.Angle(hitInfo.normal, Vector3.up)) < 85f)
                 {
-                    
                     m_RigidBody.velocity = Vector3.ProjectOnPlane(m_RigidBody.velocity, hitInfo.normal);
                 }
-                
             }
             
         }
 
 
-        private Vector2 GetInput() {
-            Vector2 input = new Vector2 {
-                    x = Input.GetAxis("Horizontal"),
-                    y = Input.GetAxis("Vertical")
-                };
-            
-			movementSettings.UpdateDesiredTargetSpeed(input);
-			
+        private Vector2 GetInput()
+        {
+            Vector2 input = new Vector2 {x = Input.GetAxis("Horizontal"), y = Input.GetAxis("Vertical")};
+            movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
         }
 

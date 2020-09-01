@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using Util.StatePattern;
 
 namespace FirstPersonController.Utility {
@@ -44,9 +46,17 @@ namespace FirstPersonController.Utility {
         public void ChangeState(TState state) 
         {
             //check if state is equal, if the same no need to change
-            if (m_State.Equals(state))
+            try
             {
-                return;
+                if (m_State.Equals(state))
+                {
+                    return;
+                }
+            }
+            catch (NullReferenceException e)
+            {
+                //state hasnt been initialized
+                Debug.LogError(e.Message);
             }
 
             //Set the state to the new state, set default state if possible
@@ -105,5 +115,8 @@ namespace FirstPersonController.Utility {
 
             return null;
         }
+
+        public static implicit operator TState(FiniteStateMachine<TState> fsm) => fsm.State;
+        public TState State => m_State;
     }
 }

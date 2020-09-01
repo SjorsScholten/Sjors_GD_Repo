@@ -44,19 +44,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="531b01d7-6385-43e3-b9fb-bfcb5d2a00f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/CameraController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/CameraController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/ScriptableObjects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/ScriptableObjects/Character.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/ScriptableObjects/Character.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/LoadoutManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/LoadoutManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Equipment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Equipment.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Loadout.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Loadout.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Attachment.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Attachment.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/CharacterModifier.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/CharacterModifier.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/UIElements.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/UIElements/ItemSlot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/UIElements/ItemSlot.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/AutomaticWeapon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/AutomaticWeapon.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/SemiAutomaticWeapon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/SemiAutomaticWeapon.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/Weapon.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/Weapon.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/GameSettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/GameSettings.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Utility/GUILoader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Utility/GUILoader.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/riderModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Sjors_GD_Repo/riderModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Sjors_GD_Repo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Sjors_GD_Repo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Sjors_GD_Repo.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Sjors_GD_Repo.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/FirstPersonController/Utility/FiniteStateMachine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/FirstPersonController/Utility/FiniteStateMachine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/RigidbodyFirstPersonController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RigidbodyFirstPersonController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,34 +104,83 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/ScriptableObjects/Character.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/Weapon.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TowerOfMagi-RogueLiteDungeonCrawler/TowerOfMagi/Assets/Utility/Scripts/StatePattern/StateMachine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@1.0.0/InputSystem/Plugins/HID/HID.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/HeadBob.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RigidbodyFirstPersonController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/CameraController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Item.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MouseLook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TowerOfMagi-RogueLiteDungeonCrawler/TowerOfMagi/Assets/Scripts/Character/Controllers/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../HinosRPG/Assets/Scripts/Character/Character.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/GameSettings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../TowerOfMagi-RogueLiteDungeonCrawler/TowerOfMagi/Assets/Scripts/Character/Entities/Character.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/UIElements/ItemSlot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/AutomaticWeapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/WeaponHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Utility/GUILoader.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/FirstPersonController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/States/BaseMovementState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/RigidbodyFirstPersonController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/States/GroundedMovementState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/SemiAutomaticWeapon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/CharacterModifier.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../HinosRPG/Assets/Scripts/Character/Character.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Equipment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Utility/FiniteStateMachine.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Utility/IState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Loadout.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../HinosShooter/Assets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/LoadoutManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Attachment.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/HeadBob.cs" />
         <option value="$PROJECT_DIR$/Assets/MouseLook.cs" />
-        <option value="$PROJECT_DIR$/Assets/RigidbodyFirstPersonController.cs" />
         <option value="$PROJECT_DIR$/../TowerOfMagi-RogueLiteDungeonCrawler/TowerOfMagi/Assets/Utility/Scripts/StatePattern/StateMachine.cs" />
         <option value="$PROJECT_DIR$/Assets/FirstPersonController/Utility/StateMachine.cs" />
-        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs" />
-        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs" />
-        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs" />
         <option value="$PROJECT_DIR$/Assets/FirstPersonController/Utility/IState.cs" />
+        <option value="$PROJECT_DIR$/Assets/RigidbodyFirstPersonController.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/AirMovementState.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/VectorExtentionMethods.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/GroundedMovementState.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/MovementStates/BaseMovementState.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Inventory/Inventory.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Equippable.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/EquipmentController.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/FirstPersonController.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/WeaponHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/States/GroundedMovementState.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/owostatetest.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/ScriptableObjects/Character.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Utility/GUILoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Weapons/WeaponHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Loadout/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Attachment.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/CharacterModifier.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Loadout.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/EquipmentPackage/Loadout.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/EquipmentPackage/LoadoutManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Attachment.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/CharacterModifier.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Loadout.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Loadout.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Item.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/UIElements/ItemSlot.cs" />
         <option value="$PROJECT_DIR$/Assets/FirstPersonController/Utility/FiniteStateMachine.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/States/BaseMovementState.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/GameSettings.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/FirstPersonController.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/CameraController.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/SctiptableObjects/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/AutomaticWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/SemiAutomaticWeapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Weapon/ScriptableObjects/Weapon.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Character/WeaponHandler.cs" />
+        <option value="$PROJECT_DIR$/Assets/FirstPersonController/Scripts/Equipment/Models/Equipment.cs" />
       </list>
     </option>
   </component>
@@ -115,6 +201,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -146,6 +233,13 @@
       <workItem from="1595066572190" duration="4288000" />
       <workItem from="1596312201328" duration="17000" />
       <workItem from="1596312243269" duration="9510000" />
+      <workItem from="1596354506761" duration="11468000" />
+      <workItem from="1596872232610" duration="2740000" />
+      <workItem from="1596960723796" duration="8860000" />
+      <workItem from="1597478025515" duration="5189000" />
+      <workItem from="1597583908136" duration="4982000" />
+      <workItem from="1598089992462" duration="19181000" />
+      <workItem from="1598171627222" duration="9057000" />
     </task>
     <servers />
   </component>
@@ -164,15 +258,22 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="774" y="256" key="RiderGenerateDialog" timestamp="1596319394804">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="2656" y="256" key="RiderGenerateDialog" timestamp="1598186537376">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="774" y="256" key="RiderGenerateDialog/62.0.1858.1080/1920.0.1920.1080@62.0.1858.1080" timestamp="1596319394804" />
-    <state x="654" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1596319081680">
-      <screen x="62" y="0" width="1858" height="1080" />
+    <state x="2656" y="256" key="RiderGenerateDialog/62.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1598186537376" />
+    <state x="774" y="256" key="RiderGenerateDialog/62.0.1858.1080/1920.0.1920.1080@62.0.1858.1080" timestamp="1596961243931" />
+    <state x="2381" y="185" key="SettingsEditor" timestamp="1597479364738">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2381" y="185" key="SettingsEditor/62.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597479364738" />
+    <state x="2532" y="235" width="695" height="678" key="search.everywhere.popup" timestamp="1597595085062">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2532" y="235" width="695" height="678" key="search.everywhere.popup/62.0.1858.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1597595085062" />
     <state x="654" y="235" width="672" height="678" key="search.everywhere.popup/62.0.1858.1080/1920.0.1920.1080@62.0.1858.1080" timestamp="1596319081680" />
   </component>
   <component name="XDebuggerManager">
